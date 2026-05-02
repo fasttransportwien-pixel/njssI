@@ -113,18 +113,20 @@ export function OrderForm({ initialService }: { initialService?: string }) {
         acceptedTerms: true as const,
         acceptedPrivacy: true as const,
       };
-      const res = await fetch('/api/orders', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      if (!res.ok) {
-        const err = await res.json().catch(() => ({}));
-        throw new Error(err?.error || 'Submit failed');
-      }
-      const data = await res.json();
-      setSuccess({ orderNumber: data.orderNumber });
-    } catch (err: any) {
+     const res = await fetch('https://formspree.io/f/xjglgkjl', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  },
+  body: JSON.stringify(payload),
+});
+
+if (!res.ok) {
+  throw new Error('Submit failed');
+}      }
+      setSuccess({ orderNumber: 'FTW-' + Date.now() });   
+  } catch (err: any) {
       setError(err.message || 'Etwas ist schiefgelaufen.');
     } finally {
       setSubmitting(false);
