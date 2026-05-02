@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 100" width="240" height="100" role="img" aria-label="Medien für Med">
+  <!-- Three rows: Medien / Für / Med -->
+  <!-- Calligraphic capitals in blue, plain text in dark -->
+  <g font-family="Georgia, 'Times New Roman', serif" font-style="italic">
+    <!-- Row 1: M edien -->
+    <text x="2"  y="28" fill="#1c8fd8" font-weight="700" font-size="32">M</text>
+    <text x="32" y="28" fill="#0b1929" font-weight="500" font-size="18">edien</text>
+    <!-- Row 2: F ür -->
+    <text x="2"  y="58" fill="#1c8fd8" font-weight="700" font-size="32">F</text>
+    <text x="32" y="58" fill="#0b1929" font-weight="500" font-size="18">ür</text>
+    <!-- Row 3: M ed -->
+    <text x="2"  y="88" fill="#1c8fd8" font-weight="700" font-size="32">M</text>
+    <text x="32" y="88" fill="#0b1929" font-weight="500" font-size="18">ed</text>
+  </g>
+</svg>

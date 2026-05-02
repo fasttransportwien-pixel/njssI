@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 80" width="220" height="80" role="img" aria-label="Wolt">
+  <circle cx="40" cy="40" r="32" fill="#00C2E8"/>
+  <text x="40" y="50" text-anchor="middle" fill="#ffffff"
+        font-family="'Brush Script MT', 'Lucida Handwriting', cursive"
+        font-style="italic" font-weight="700" font-size="30">W</text>
+  <text x="86" y="52" fill="#1f2937"
+        font-family="Helvetica, Arial, sans-serif"
+        font-weight="800" font-size="32" letter-spacing="-1">Wolt</text>
+</svg>

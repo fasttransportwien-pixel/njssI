@@ -1,0 +1,106 @@
+// Prisma schema for Fast Transport Wien
+// Provider: PostgreSQL (Vercel Postgres / Neon / Supabase / Railway all work)
+// All status/type fields are stored as TEXT (no enums) for maximum portability.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ----- Orders -----
+// Status values: RECEIVED | IN_REVIEW | CONFIRMED | IN_PROGRESS | DELIVERED | CANCELLED
+// ServiceType values: PACKAGE | FLOWERS | DOCUMENTS | MAGAZINES | STORE_PICKUP | EXPRESS | COOLING | BUSINESS
+
+model Order {
+  id              String      @id @default(cuid())
+  orderNumber     String      @unique
+  status          String      @default("RECEIVED")
+
+  customerName    String
+  customerEmail   String
+  customerPhone   String
+  customerCompany String?
+
+  serviceType     String
+  goodsType       String?
+  weightKg        Float?
+  isExpress       Boolean     @default(false)
+  isCooling       Boolean     @default(false)
+
+  pickupAddress   String
+  pickupLat       Float?
+  pickupLng       Float?
+  scheduledDate   DateTime
+  scheduledTime   String?
+  notes           String?
+
+  stops           OrderStop[]
+
+  // Pricing in cents (integer math, no float drift)
+  subtotalGrossCents  Int
+  discountCents       Int       @default(0)
+  totalGrossCents     Int
+  appliedDiscountCode String?
+  numAddresses        Int
+
+  // Admin overrides
+  adminPriceCents     Int?
+  adminNote           String?
+
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  invoice         Invoice?
+
+  @@index([status])
+  @@index([createdAt])
+  @@index([customerEmail])
+}
+
+model OrderStop {
+  id        String  @id @default(cuid())
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId   String
+  position  Int
+  address   String
+  lat       Float?
+  lng       Float?
+  contact   String?
+
+  @@index([orderId])
+}
+
+// ----- Invoices -----
+model Invoice {
+  id              String   @id @default(cuid())
+  invoiceNumber   String   @unique
+  order           Order    @relation(fields: [orderId], references: [id])
+  orderId         String   @unique
+  issuedAt        DateTime @default(now())
+  dueDays         Int      @default(7)
+
+  // Snapshotted at issuance
+  customerName    String
+  customerAddress String
+  description     String
+  netCents        Int
+  vatCents        Int
+  grossCents      Int
+
+  @@index([issuedAt])
+}
+
+// ----- Contact messages -----
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  message   String
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+}

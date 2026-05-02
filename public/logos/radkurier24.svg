@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 100" width="280" height="100" role="img" aria-label="Radkurier24">
+  <!-- Bicycle line drawing -->
+  <g transform="translate(70 8)" fill="none" stroke="#0d1521" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Wheels -->
+    <circle cx="22" cy="40" r="18"/>
+    <circle cx="78" cy="40" r="18"/>
+    <!-- Wing speed lines on left wheel -->
+    <path d="M -6 32 L 6 36"/>
+    <path d="M -8 40 L 6 40"/>
+    <path d="M -6 48 L 6 44"/>
+    <!-- Frame -->
+    <path d="M 22 40 L 44 14 L 64 40 L 78 40"/>
+    <path d="M 44 14 L 56 4 L 66 4"/>
+    <path d="M 44 14 L 38 2 L 46 -1"/>
+    <!-- Saddle -->
+    <path d="M 60 14 Q 68 8 76 14"/>
+  </g>
+  <!-- Red hub center -->
+  <circle cx="92" cy="48" r="4" fill="#d73a3a"/>
+  <circle cx="92" cy="48" r="2" fill="#0d1521"/>
+  <!-- Wordmark -->
+  <text x="6" y="92"
+        font-family="Helvetica, Arial, sans-serif" font-weight="900" font-size="22"
+        letter-spacing="-0.5">
+    <tspan fill="#0d1521">Radkurier</tspan><tspan fill="#d73a3a">24</tspan>
+  </text>
+</svg>
