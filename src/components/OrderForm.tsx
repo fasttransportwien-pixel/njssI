@@ -124,7 +124,7 @@ export function OrderForm({ initialService }: { initialService?: string }) {
 
 if (!res.ok) {
   throw new Error('Submit failed');
-}      }
+}      
       setSuccess({ orderNumber: 'FTW-' + Date.now() });   
   } catch (err: any) {
       setError(err.message || 'Etwas ist schiefgelaufen.');
